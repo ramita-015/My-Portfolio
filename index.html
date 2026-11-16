@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio | รมิตา ขวัญทอง</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #fff5f8;
+    color: #684354;
+    min-height: 100vh;
+}
+
+/* เมนูด้านบน */
+header {
+    background: linear-gradient(120deg, #d96f99, #f3b5ca);
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 18px #e8c1d0;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav button {
+    border: 0;
+    background: transparent;
+    color: white;
+    padding: 10px 13px;
+    border-radius: 22px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+nav button:hover,
+nav button.active {
+    background: white;
+    color: #c45680;
+}
+
+/* ระบบแยกหน้า */
+main {
+    max-width: 1050px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.page {
+    display: none;
+    animation: appear .3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* หน้าแรก */
+.hero,
+.panel {
+    background: white;
+    border: 1px solid #f3d5e1;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px #e9cbd7;
+    padding: 35px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: left;
+    min-height: 430px;
+    background: linear-gradient(135deg, #fff, #ffe5ef);
+}
+
+/* รูปโปรไฟล์ */
+.profile {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 8px solid white;
+    box-shadow: 0 5px 22px #d99bb4;
+}
+
+.hero-text {
+    max-width: 480px;
+}
+
+.eyebrow {
+    color: #c45c83;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: clamp(27px, 5vw, 42px);
+    color: #b94e79;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #bd557e;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h3 {
+    color: #bd557e;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.9;
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* ปุ่ม */
+.primary {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 25px;
+    background: #d96f99;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary:hover {
+    background: #b94e79;
+}
+
+/* กล่องข้อมูล */
+.panel {
+    max-width: 850px;
+    margin: auto;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5e0e8;
+}
+
+.info strong {
+    color: #bd557e;
+}
+
+/* ทักษะ */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #fff0f5;
+    border: 1px solid #f3d5e1;
+    padding: 24px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px #efd4df;
+}
+
+/* ผลงาน */
+.project {
+    background: #fff0f5;
+    border-left: 5px solid #df83a6;
+    padding: 22px;
+    border-radius: 14px;
+    margin: 15px 0;
+}
+
+/* ท้ายเว็บไซต์ */
+footer {
+    text-align: center;
+    background: #e99bb8;
+    color: white;
+    padding: 20px;
+    margin-top: 45px;
+}
+
+.back {
+    display: block;
+    margin: 25px auto 0;
+}
+
+/* รองรับโทรศัพท์ */
+@media(max-width: 650px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    nav button {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 25px 18px;
+    }
+
+    .profile {
+        width: 185px;
+        height: 185px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .panel {
+        padding: 24px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- เมนู -->
+<header>
+    <div class="logo">♡ MY PORTFOLIO</div>
+
+    <nav>
+        <button class="active" onclick="showPage('home',this)">หน้าแรก</button>
+        <button onclick="showPage('about',this)">ประวัติส่วนตัว</button>
+        <button onclick="showPage('education',this)">การศึกษา</button>
+        <button onclick="showPage('skills',this)">ทักษะ</button>
+        <button onclick="showPage('projects',this)">ผลงาน</button>
+        <button onclick="showPage('contact',this)">ติดต่อ</button>
+    </nav>
+</header>
+
+<main>
+
+<!-- หน้า 1 หน้าแรก -->
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <img class="profile" src="profile.png"
+        alt="รูปโปรไฟล์ของรมิตา">
+
+        <div class="hero-text">
+
+            <div class="eyebrow">
+                WELCOME TO MY PROTFOLIO
+            </div>
+
+            <h1>นางสาวรมิตา ขวัญทอง</h1>
+
+            <p>ชื่อเล่น กัลย์</p>
+            <p>นักเรียนแผนกเทคโนโลยีสารสนเทศ</p>
+            <p>แฟ้มสะสมผลงานและประวัติส่วนตัวของฉัน</p>
+
+            <button class="primary"
+            onclick="showPage('about')">
+                รู้จักฉันเพิ่มเติม ♡
+            </button>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- หน้า 2 ประวัติส่วนตัว -->
+<section id="about" class="page">
+
+    <div class="panel">
+
+        <h2>ประวัติส่วนตัว</h2>
+
+        <div class="info">
+            <strong>ชื่อ-นามสกุล</strong>
+            <span>นางสาวรมิตา ขวัญทอง</span>
+        </div>
+
+        <div class="info">
+            <strong>ชื่อเล่น</strong>
+            <span>กัลย์</span>
+        </div>
+
+        <div class="info">
+            <strong>แผนกวิชา</strong>
+            <span>เทคโนโลยีสารสนเทศ</span>
+        </div>
+
+        <div class="info">
+            <strong>สถานศึกษา</strong>
+            <span>วิทยาลัยเทคนิคสิงห์บุรี</span>
+        </div>
+
+        <p style="margin-top:20px">
+            สวัสดีค่ะ ฉันชื่อรมิตา ขวัญทอง ชื่อเล่นกัลย์
+            กำลังศึกษาอยู่แผนกเทคโนโลยีสารสนเทศ
+            มีความสนใจด้านคอมพิวเตอร์ การออกแบบเว็บไซต์
+            และการสร้างเกม พร้อมเรียนรู้และพัฒนาความสามารถ
+            ของตนเองอยู่เสมอ
+        </p>
+
+        <button class="primary back"
+        onclick="showPage('home')">
+            กลับหน้าแรก
+        </button>
+
+    </div>
+</section>
+
+<!-- หน้า 3 การศึกษา -->
+<section id="education" class="page">
+
+    <div class="panel">
+
+        <h2>ประวัติการศึกษา</h2>
+
+        <div class="card">
+
+            <h3>วิทยาลัยเทคนิคสิงห์บุรี</h3>
+
+            <p>แผนกวิชาเทคโนโลยีสารสนเทศ</p>
+
+            <p>ระดับประกาศนียบัตรวิชาชีพ (ปวช.)</p>
+
+        </div>
+
+        <p style="text-align:center;margin-top:20px">
+            กำลังศึกษาและพัฒนาความรู้ด้านคอมพิวเตอร์
+            เทคโนโลยีสารสนเทศ และการเขียนโปรแกรม
+        </p>
+
+        <button class="primary back"
+        onclick="showPage('home')">
+            กลับหน้าแรก
+        </button>
+
+    </div>
+</section>
+
+<!-- หน้า 4 ทักษะ -->
+<section id="skills" class="page">
+
+    <div class="panel">
+
+        <h2>ทักษะและความสามารถ</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>HTML</h3>
+                <p>การสร้างโครงสร้างเว็บไซต์</p>
+            </div>
+
+            <div class="card">
+                <h3>CSS</h3>
+                <p>การตกแต่งเว็บไซต์</p>
+            </div>
+
+            <div class="card">
+                <h3>Kodular</h3>
+                <p>การสร้างแอปพลิเคชัน</p>
+            </div>
+
+            <div class="card">
+                <h3>RPG Maker MV</h3>
+                <p>การสร้างเกม</p>
+            </div>
+
+            <div class="card">
+                <h3>ออกแบบเว็บไซต์</h3>
+                <p>การจัดวางและออกแบบหน้าเว็บ</p>
+            </div>
+
+        </div>
+
+        <button class="primary back"
+        onclick="showPage('home')">
+            กลับหน้าแรก
+        </button>
+
+    </div>
+</section>
+
+<!-- หน้า 5 ผลงาน -->
+<section id="projects" class="page">
+
+    <div class="panel">
+
+        <h2>ผลงานและโปรเจกต์</h2>
+
+        <div class="project">
+            <h3>01 | การสร้างเว็บไซต์</h3>
+            <p>
+                ฝึกออกแบบและพัฒนาเว็บไซต์
+                ด้วยภาษา HTML และ CSS
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>02 | การสร้างเกม</h3>
+            <p>
+                ฝึกสร้างเกมและออกแบบเนื้อเรื่อง
+                ด้วยโปรแกรม RPG Maker MV
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>03 | การสร้างแอปพลิเคชัน</h3>
+            <p>
+                ฝึกออกแบบแอปพลิเคชัน
+                ด้วยโปรแกรม Kodular
+            </p>
+        </div>
+
+        <button class="primary back"
+        onclick="showPage('home')">
+            กลับหน้าแรก
+        </button>
+
+    </div>
+</section>
+
+<!-- หน้า 6 ติดต่อ -->
+<section id="contact" class="page">
+
+    <div class="panel">
+
+        <h2>ช่องทางการติดต่อ</h2>
+
+        <div class="info">
+            <strong>ชื่อ</strong>
+            <span>รมิตา ขวัญทอง</span>
+        </div>
+
+        <div class="info">
+            <strong>ชื่อเล่น</strong>
+            <span>กัลย์</span>
+        </div>
+
+        <div class="info">
+            <strong>อีเมล</strong>
+            <span>ktramita248@gmail.com</span>
+        </div>
+
+        <div class="info">
+            <strong>สถานศึกษา</strong>
+            <span>วิทยาลัยเทคนิคสิงห์บุรี</span>
+        </div>
+
+        <button class="primary back"
+        onclick="showPage('home')">
+            กลับหน้าแรก
+        </button>
+
+    </div>
+</section>
+
+</main>
+
+<!-- ท้ายเว็บไซต์ -->
+<footer>
+    <p>♡ MY PORTFOLIO ♡</p>
+    <p>จัดทำโดย นางสาวรมิตา ขวัญทอง</p>
+</footer>
+
+<!-- ระบบเปลี่ยนหน้า -->
+<script>
+
+function showPage(pageId, clickedButton) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(pageId).classList.add('active');
+
+    document.querySelectorAll('nav button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    if (clickedButton) {
+
+        clickedButton.classList.add('active');
+
+    } else {
+
+        const buttons = document.querySelectorAll('nav button');
+
+        const pageNames = [
+            'home',
+            'about',
+            'education',
+            'skills',
+            'projects',
+            'contact'
+        ];
+
+        const index = pageNames.indexOf(pageId);
+
+        if (index >= 0) {
+            buttons[index].classList.add('active');
+        }
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+
+}
+
+</script>
+
+</body>
+</html>
